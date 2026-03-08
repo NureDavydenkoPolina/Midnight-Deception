@@ -7,7 +7,7 @@ define unknown = Character("???", color="#1f0099")
 define voice1 = Character ('Voice 1', color="#7a5408")
 define voice2 = Character ('Voice 2', color="#999999")
 
-define player = 'Lina'
+define player = Character("[player]", color="#1f0099")
 
 define suspicion_mc = 0
 define suspicion_sophia = 0
@@ -57,17 +57,35 @@ init:
         yalign 1.0
         anchor (0.5, 1.0)
 
+
+#начало
 label start:
     scene outside
     with fade
-    'It was raining when I arrived at the mansion.'
-    'The house stood tall in the darkness - beautiful, elegant... and somehow unsettling. The warm lights in the windows didn`t make it feel any less intimidating.'
-    'Daniel.'
-    'We`ve known each other since I was a kid and he was just a broke teenager hanging out at the computer club. We used to sit for hours in front of old monitors, dreaming about the future.'
-    'And now... look at him.'
-    'I won`t lie. I`m jealous.'
-    'He invited me to this party, said he wanted me to meet his friends.'
-    'But everyone knows that`s not the real reason we`re here.'
+    $ letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгґдеєжзиіїйклмнопрстуфхцчшщьюяАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ- "
+    $ player = renpy.input("What is your name?", length = 12, allow = letters).strip()
+    if player == "":
+        $ player = "Lina"
+
+    #if player == "Polina"
+        #secret ending
+    '''
+    It was raining when I arrived at the mansion.
+
+    The house stood tall in the darkness - beautiful, elegant... and somehow unsettling. The warm lights in the windows didn`t make it feel any less intimidating.
+
+    Daniel.
+
+    We`ve known each other since I was a kid and he was just a broke teenager hanging out at the computer club. We used to sit for hours in front of old monitors, dreaming about the future.
+
+    And now...{w=1} look at him.
+
+    I won`t lie. I`m jealous.
+
+    He invited me to this party, said he wanted me to meet his friends.
+
+    But everyone knows that`s not the real reason we`re here.
+    '''
 
     scene living_room
     with fade
@@ -80,7 +98,7 @@ label start:
 
     sophie happy "I`m Sophie. I used to work with Daniel`s wife..."
 
-    sophie sad "...before she... you know."
+    extend sad " before she... you know."
 
     player "Oh... yes. Nice to meet you, Sophie. I`m [player]."
 
